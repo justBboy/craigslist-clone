@@ -1,0 +1,63 @@
+{% load static %}
+
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Craigslist</title>
+</head>
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="/" class="brand-logo">Craigslist-Clone</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1 style="text-align: center">What do you wanna search on this clone?</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <div class="center">
+                    <i class="large material-icons" style="color: #ee6e73">flash_on</i>
+                    <p>Fast craigslist web scraper</p>
+                    <p class="light-center">Scrape with a beautiful Gui</p>
+                </div>
+            </div>
+
+            <div class="col s4">
+                <div class="center">
+                    <i class="large material-icons" style="color: orange">camera</i>
+                    <p>Filter Your searches</p>
+                    <p class="light-center">Best functionality</p>
+                </div>
+            </div>
+            
+            <div class="col s4">
+                <div class="center">
+                    <i class="large material-icons" style="color: blue">chrome_reader_mode</i>
+                    <p>Nice frontend</p>
+                    <p class="light-center">Built with 💟 </p>
+                </div>
+            </div>
+            
+        </div>
+        <h2>New search</h2>
+        <form method="post" action="{% url 'app/new_search' %}">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search what you want to here" />
+            <input type="submit" hidden />
+        </form>
+    </div>
+    {% block content %}{% endblock content %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
